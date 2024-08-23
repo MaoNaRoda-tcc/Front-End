@@ -169,7 +169,6 @@ class _LoginPageState extends State<LoginPage> {
                       if (senha == '1234' && email == 'oka@gmail.com.br') {
                         // Navigator.of(context).pushReplacement(MaterialPageRoute(
                         //     builder: (context) => HomePage()));
-
                         Navigator.of(context).pushReplacementNamed('/home');
                       }
                     },

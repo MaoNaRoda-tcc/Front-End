@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "757205054497",
+    "firebase_url": "https://maonaroda-6cd9c-default-rtdb.firebaseio.com",
+    "project_id": "maonaroda-6cd9c",
+    "storage_bucket": "maonaroda-6cd9c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:757205054497:android:fe124643c75b12e0565f60",
+        "android_client_info": {
+          "package_name": "com.example.app_mao_na_roda"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYGxeePEw6GRh7wVtGTn_xdmlAN-QM4F8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
