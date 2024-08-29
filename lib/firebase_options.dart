@@ -90,4 +90,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'maonaroda-6cd9c.appspot.com',
     measurementId: 'G-G7FB6RB44T',
   );
+
 }
