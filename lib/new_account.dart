@@ -1,22 +1,30 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:app_mao_na_roda/autenticacao.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'login_textfield.dart';
 import 'package:flutter/services.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class NewAccount extends StatefulWidget {
+  const NewAccount({super.key});
+  
+  get onChanged => null;
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<NewAccount> createState() => _NewAccountState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _NewAccountState extends State<NewAccount> {
 final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   String email = "";
+  String cpf = "";
+  String nome = "";
   String senha = "";
+  String confirmSenha = "";
+
+  Autenticacao _autenticacao = Autenticacao();
 
   @override
   void initState() {
@@ -42,12 +50,6 @@ final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // Container(
-                //   width: 200,
-                //   height: 200,
-                //   child: Image.network(
-                //       'https://files.fm/thumb_show.php?i=yhsvu7k63s'),
-                // ),
                 SizedBox(
                   height: 1,
                 ),
@@ -66,20 +68,20 @@ final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
                             width: MediaQuery.of(context).size.width,
                           ),
                           Text(
-                            'Login',
+                            'Cadastre-se',
                             style: TextStyle(
                                 color: Color.fromRGBO(255, 255, 255, 0.8),
                                 fontSize: 35),
                           ),
                           Text(
-                            'Entre no APP por meio da sua conta',
+                            'Crie uma conta para acessar os conteúdos',
                             style: TextStyle(
                                 color: Color.fromRGBO(255, 255, 255, 0.8),
                                 fontSize: 18),
                           )
                         ]),
                     SizedBox(
-                      height: 30,
+                      height: 20,
                     ),
                     LoginTextfield(
                       labelText: 'E-mail',
@@ -88,13 +90,71 @@ final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
                       },
                     ),
                     SizedBox(
-                      height: 30,
+                      height: 20,
+                    ),
+                    TextField(
+                      onChanged: (value) {
+                        setState(() {
+                          cpf = value;
+                          if (widget.onChanged != null) {
+                            widget.onChanged!(cpf);
+                          }
+                        });
+                      },
+                      obscureText: false,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Color.fromRGBO(255, 255, 255, 0.8))),
+                        labelText: 'Cpf',
+                        filled: true,
+                        fillColor: Color.fromRGBO(0, 0, 0, 1),
+                        labelStyle: TextStyle(color: Color.fromRGBO(255, 255, 255, 0.8)),
+                      ),
+                      style: TextStyle(color: Color.fromRGBO(255, 255, 255, 0.8)),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    TextField(
+                      onChanged: (value) {
+                        setState(() {
+                          nome = value;
+                          if (widget.onChanged != null) {
+                            widget.onChanged!(nome);
+                          }
+                        });
+                      },
+                      obscureText: false,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Color.fromRGBO(255, 255, 255, 0.8))),
+                        labelText: 'Nome',
+                        filled: true,
+                        fillColor: Color.fromRGBO(0, 0, 0, 1),
+                        labelStyle: TextStyle(color: Color.fromRGBO(255, 255, 255, 0.8)),
+                      ),
+                      style: TextStyle(color: Color.fromRGBO(255, 255, 255, 0.8)),
+                    ),
+                    SizedBox(
+                      height: 20,
                     ),
                     LoginTextfield(
                       labelText: 'Senha',
                       isObscured: true,
                       onChanged: (value) {
                         senha = value;
+                      },
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    LoginTextfield(
+                      labelText: 'Confirmação de senha',
+                      isObscured: true,
+                      onChanged: (value) {
+                        confirmSenha = value;
                       },
                     ),
                     SizedBox(
@@ -115,13 +175,12 @@ final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
                           ),
                         ),
                         onPressed: () {
-                        logarUser(email: email, senha: senha).then((String? erro){
-                        if (erro != null){
-                          print(erro);
-                        }else{
-                          Navigator.of(context).pushReplacementNamed('/home');
-                        }
-                      });
+                          if( senha == confirmSenha && cpf != "" && nome != "" && senha != "" && confirmSenha != ""){
+                      _autenticacao.registerUser(nome: nome, senha: senha, email: email);
+                      Navigator.of(context).pushReplacementNamed('/login');
+                          }else{
+                            print("algo deu errado!");
+                          }
                         },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -170,7 +229,9 @@ final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
                       ),
                     ),
                     onPressed: () {
-                      Navigator.of(context).pushReplacementNamed('/Cadastro');       
+                      // if (senha == '1234' && email == 'oka@gmail.com.br') {
+                      //     Navigator.of(context).pushReplacementNamed('/home');
+                      // }         
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -201,14 +262,6 @@ final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
     );
   }
 
-  Future<String?> logarUser(
-      {required String email, required String senha }) async{
-        try{
-    await _firebaseAuth.signInWithEmailAndPassword(
-    email: email, password: senha);
-    return null;
-        } on FirebaseException catch (e) {
-          return e.message;
-        }
-  }
+
+
 }
