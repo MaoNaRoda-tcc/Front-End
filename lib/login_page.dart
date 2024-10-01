@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'login_textfield.dart';
 import 'package:flutter/services.dart';
@@ -13,8 +12,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-
   String email = "";
   String senha = "";
 
@@ -115,13 +112,12 @@ final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
                           ),
                         ),
                         onPressed: () {
-                        logarUser(email: email, senha: senha).then((String? erro){
-                        if (erro != null){
-                          print(erro);
-                        }else{
-                          Navigator.of(context).pushReplacementNamed('/home');
-                        }
-                      });
+                          if (senha == '1234' && email == 'oka@gmail.com.br') {
+                            // Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            //     builder: (context) => HomePage()));
+
+                            Navigator.of(context).pushReplacementNamed('/home');
+                          }
                         },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -170,7 +166,12 @@ final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
                       ),
                     ),
                     onPressed: () {
-                      Navigator.of(context).pushReplacementNamed('/Cadastro');       
+                      if (senha == '1234' && email == 'oka@gmail.com.br') {
+                        // Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        //     builder: (context) => HomePage()));
+
+                        Navigator.of(context).pushReplacementNamed('/home');
+                      }
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -199,16 +200,5 @@ final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
         ),
       ),
     );
-  }
-
-  Future<String?> logarUser(
-      {required String email, required String senha }) async{
-        try{
-    await _firebaseAuth.signInWithEmailAndPassword(
-    email: email, password: senha);
-    return null;
-        } on FirebaseException catch (e) {
-          return e.message;
-        }
   }
 }
