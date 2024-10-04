@@ -1,19 +1,9 @@
-import 'package:app_mao_na_roda/AddPublish.dart';
-import 'package:app_mao_na_roda/EventDetails.dart';
-import 'package:app_mao_na_roda/addCar.dart';
-import 'package:app_mao_na_roda/addPublishCarro.dart';
-import 'package:app_mao_na_roda/addPublishEvento.dart';
 import 'package:app_mao_na_roda/app_controller.dart';
-import 'package:app_mao_na_roda/carDetails.dart';
-import 'package:app_mao_na_roda/eventos.dart';
-import 'package:app_mao_na_roda/garagem.dart';
 import 'package:app_mao_na_roda/home_page.dart';
 import 'package:app_mao_na_roda/login_page.dart';
-import 'package:app_mao_na_roda/pecas.dart';
-import 'package:app_mao_na_roda/perfil.dart';
+import 'package:app_mao_na_roda/new_account.dart';
 import 'package:app_mao_na_roda/splash_screen.dart';
 import 'package:flutter/material.dart';
-// import 'package:app_mao_na_roda/car_model_dropdown.dart';
 
 class AppWidget extends StatelessWidget {
   @override
@@ -30,18 +20,9 @@ class AppWidget extends StatelessWidget {
           initialRoute: '/',
           routes: {
             '/': (context) => SplashScreen(),
-            '/login': (context) => LoginPage(),
             '/home': (context) => HomePage(),
-            '/addPubli': (context) => AddPublish(),
-            '/eventos': (context) => Eventos(),
-            '/addPubliEvento': (context) => AddPublishEvento(),
-            '/pecas': (context) => Pecas(),
-            '/addPeca': (context) => AddPublishCarro(),
-            '/EventDetails': (context) => EventDetails(),
-            '/perfil': (context) => Perfil(),
-            '/garagem': (context) => garagem(),
-            '/cardetails': (context) => carDetails(),
-            '/addCar': (context) => addCar(),
+            '/login': (context) => LoginPage(),
+            '/Cadastro': (context) => NewAccount(),
           },
         );
       },
