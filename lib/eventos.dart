@@ -1,8 +1,12 @@
+import 'package:app_mao_na_roda/api/RequestEvents.dart';
+import 'package:app_mao_na_roda/bloc/RequestEvents.dart';
 import 'package:flutter/material.dart';
 
 class Eventos extends StatelessWidget {
+  var events =  EventBloc.getEvents();
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {  
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -70,6 +74,7 @@ class Eventos extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).pushReplacementNamed('/addPubliEvento');
+          
         },
         child: Icon(Icons.add),
         backgroundColor: Colors.grey[800],

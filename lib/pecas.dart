@@ -37,27 +37,27 @@ class Pecas extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: [
-                  PartCard(
-                    title: 'Pastilha Freio Diant. Tras. Bosch',
-                    vendor: 'Mercado Car',
-                    imageUrl: 'https://via.placeholder.com/150',
-                  ),
-                  PartCard(
-                    title: 'Bomba Combustível Punto 1.4 16v T-jet. Bosch',
-                    vendor: 'Mercado Car',
-                    imageUrl: 'https://via.placeholder.com/150',
-                  ),
-                  PartCard(
-                    title:
-                        'Kit Palheta Dianteira Bosch + Traseira Vetor Punto',
-                    vendor: 'Mercado Car',
-                    imageUrl: 'https://via.placeholder.com/150',
-                  ),
-                  PartCard(
-                    title: 'Pastilha Freio Diant. Tras. Bosch',
-                    vendor: 'Mercado Car',
-                    imageUrl: 'https://via.placeholder.com/150',
-                  ),
+                  // PartCard(
+                  //   title: 'Pastilha Freio Diant. Tras. Bosch',
+                  //   vendor: 'Mercado Car',
+                  //   imageUrl: 'https://via.placeholder.com/150',
+                  // ),
+                  // PartCard(
+                  //   title: 'Bomba Combustível Punto 1.4 16v T-jet. Bosch',
+                  //   vendor: 'Mercado Car',
+                  //   imageUrl: 'https://via.placeholder.com/150',
+                  // ),
+                  // PartCard(
+                  //   title:
+                  //       'Kit Palheta Dianteira Bosch + Traseira Vetor Punto',
+                  //   vendor: 'Mercado Car',
+                  //   imageUrl: 'https://via.placeholder.com/150',
+                  // ),
+                  // PartCard(
+                  //   title: 'Pastilha Freio Diant. Tras. Bosch',
+                  //   vendor: 'Mercado Car',
+                  //   imageUrl: 'https://via.placeholder.com/150',
+                  // ),
                 ],
               ),
             ),
