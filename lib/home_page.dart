@@ -1,7 +1,9 @@
+import 'package:app_mao_na_roda/bloc/RequestEvents.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
   @override
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -16,20 +18,21 @@ class HomePage extends StatelessWidget {
         color: Colors.black, // Define o fundo da página como preto
         child: ListView(
           children: [
-            PostWidget(
-              imageUrl: 'https://via.placeholder.com/150',
-              description: 'Suspensão novas',
-            ),
-            PostWidget(
-              imageUrl: 'https://via.placeholder.com/150',
-              description: 'Rodas novas',
-            ),
+            // PostWidget(
+            //   imageUrl: 'https://via.placeholder.com/150',
+            //   description: 'Suspensão novas',
+            // ),
+            // PostWidget(
+            //   imageUrl: 'https://via.placeholder.com/150',
+            //   description: 'Rodas novas',
+            // ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).pushReplacementNamed('/addPubli');
+        onPressed: () async {
+           Navigator.of(context).pushReplacementNamed('/addPubliEvento');
+          print('SLAAAAA');
         },
         child: Icon(Icons.add),
         backgroundColor: Colors.grey[800],
