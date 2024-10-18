@@ -3,15 +3,10 @@ import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
   @override
-
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: 
-        Text(
-          'Postagens',
-          style: TextStyle(color: Colors.white)
-        ),
+        title: Text('Postagens', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.black,
       ),
       body: Container(
@@ -31,7 +26,7 @@ class HomePage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-           Navigator.of(context).pushReplacementNamed('/addPubliEvento');
+          Navigator.of(context).pushReplacementNamed('/addPubli');
           print('SLAAAAA');
         },
         child: Icon(Icons.add),

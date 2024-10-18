@@ -1,17 +1,17 @@
 import 'package:app_mao_na_roda/AddPublish.dart';
-import 'package:app_mao_na_roda/EventDetails.dart';
-import 'package:app_mao_na_roda/addCar.dart';
-import 'package:app_mao_na_roda/addPublishCarro.dart';
-import 'package:app_mao_na_roda/addPublishEvento.dart';
+import 'package:app_mao_na_roda/features/events/pages/eventDetails.dart';
+import 'package:app_mao_na_roda/features/garage/pages/addCar.dart';
+import 'package:app_mao_na_roda/features/garage/pages/addCarOnGarage.dart';
+import 'package:app_mao_na_roda/features/events/pages/addEvent.dart';
 import 'package:app_mao_na_roda/app_controller.dart';
-import 'package:app_mao_na_roda/carDetails.dart';
-import 'package:app_mao_na_roda/eventos.dart';
-import 'package:app_mao_na_roda/garagem.dart';
-import 'package:app_mao_na_roda/home_page.dart';
-import 'package:app_mao_na_roda/login_page.dart';
-import 'package:app_mao_na_roda/new_account.dart';
-import 'package:app_mao_na_roda/pecas.dart';
-import 'package:app_mao_na_roda/perfil.dart';
+import 'package:app_mao_na_roda/features/garage/pages/carDetails.dart';
+import 'package:app_mao_na_roda/features/events/pages/events.dart';
+import 'package:app_mao_na_roda/features/garage/pages/garagem.dart';
+import 'package:app_mao_na_roda/features/home/pages/home_page.dart';
+import 'package:app_mao_na_roda/features/login/pages/login_page.dart';
+import 'package:app_mao_na_roda/features/login/pages/new_account.dart';
+import 'package:app_mao_na_roda/features/parts/pages/parts.dart';
+import 'package:app_mao_na_roda/features/profile/pages/profile.dart';
 import 'package:app_mao_na_roda/splash_screen.dart';
 import 'package:flutter/material.dart';
 // import 'package:app_mao_na_roda/car_model_dropdown.dart';
@@ -43,7 +43,7 @@ class AppWidget extends StatelessWidget {
             '/garagem': (context) => garagem(),
             '/cardetails': (context) => carDetails(),
             '/addCar': (context) => addCar(),
-            '/Cadastro':(context) => NewAccount(),
+            '/Cadastro': (context) => NewAccount(),
           },
         );
       },

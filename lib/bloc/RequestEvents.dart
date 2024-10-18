@@ -1,4 +1,4 @@
-import 'package:app_mao_na_roda/models/EventModel.dart';
+import 'package:app_mao_na_roda/shared/models/EventModel.dart';
 import 'package:app_mao_na_roda/api/RequestEvents.dart';
 
 class EventBloc {
