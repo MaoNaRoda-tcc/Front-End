@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:app_mao_na_roda/car_model_dropdown.dart';
+import 'package:app_mao_na_roda/shared/components/car_model_dropdown.dart';
 
 class Pecas extends StatelessWidget {
   @override
