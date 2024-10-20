@@ -5,7 +5,7 @@ class EventBloc {
   static List<EventModel> events = [];
 
   static Future<void> getEvents() async {
-    ApiService apiService = ApiService(); // Instancia ApiService
+    ApiServiceEvents apiService = ApiServiceEvents(); // Instancia ApiService
     EventBloc.events = await apiService.fetchEvents(); // Carrega os eventos
   }
 }
