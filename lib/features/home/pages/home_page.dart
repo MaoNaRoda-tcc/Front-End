@@ -1,4 +1,5 @@
-import 'package:app_mao_na_roda/bloc/RequestEvents.dart';
+import 'package:app_mao_na_roda/bloc/RequestPubli.dart';
+import 'package:app_mao_na_roda/shared/models/PubliModel.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -9,21 +10,28 @@ class HomePage extends StatelessWidget {
         title: Text('Postagens', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.black,
       ),
-      body: Container(
-        color: Colors.black, // Define o fundo da página como preto
-        child: ListView(
-          children: [
-            // PostWidget(
-            //   imageUrl: 'https://via.placeholder.com/150',
-            //   description: 'Suspensão novas',
-            // ),
-            // PostWidget(
-            //   imageUrl: 'https://via.placeholder.com/150',
-            //   description: 'Rodas novas',
-            // ),
-          ],
-        ),
-      ),
+       body: FutureBuilder<List<PubliModel>>(
+        future: PubiBloc.getPublications(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return Center(child: Text('Erro ao carregar publicações'));
+          } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
+            List<PubliModel> publications = snapshot.data!;
+            return ListView(
+              children: publications.map((result) {
+                  return PostWidget(
+                    imageUrl: result.link_foto, 
+                    description: result.titulo,
+                  );
+                }).toList(),
+                );
+          } else {
+            return Center(child: Text('Nenhuma publicação disponível'));
+          }
+        },
+       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           Navigator.of(context).pushReplacementNamed('/addPubli');

@@ -1,21 +1,22 @@
 import 'package:app_mao_na_roda/shared/models/EventModel.dart';
+import 'package:app_mao_na_roda/shared/models/PubliModel.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-class ApiServiceEvents {
+class ApiServicePubli {
   static const apiUrl =
-      'https://back-end-9p5p.onrender.com/publicacao?skip=10&take=10';
+      'https://back-end-9p5p.onrender.com/publicacao?skip=0&take=10';
 
-  Future<List<EventModel>> fetchEvents() async {
+  Future<List<PubliModel>> fetchEvents() async {
     final url = Uri.parse(apiUrl);
     var response = await http.get(url);
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body) as List;
-      List<EventModel> events =
-          data.map((event) => EventModel.fromMap(event)).toList();
+      List<PubliModel> publications =
+          data.map((publi) => PubliModel.fromMap(publi)).toList();
 
-      return events;
+      return publications;
     } else {
       throw Exception('Erro na requisição: ${response.statusCode}');
     }
